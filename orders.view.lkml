@@ -7,15 +7,7 @@ view: orders {
 
   dimension_group: created {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+    timeframes: [raw, time, date, week, month, quarter, year, raw, time, date, week, month, quarter, year, raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
 
@@ -31,7 +23,7 @@ view: orders {
 
   dimension: user_id {
     type: number
-    # hidden: yes
+    hidden: no
     sql: ${TABLE}.user_id ;;
   }
 
@@ -39,19 +31,19 @@ view: orders {
     type: number
     value_format_name: decimal_2
     sql:
-      (SELECT SUM(order_items.sale_price)
-      FROM order_items
-      WHERE order_items.order_id = ${id}) ;;
+    (SELECT SUM(order_items.sale_price)
+    FROM order_items
+    WHERE order_items.order_id = ${id}) ;;
   }
 
   dimension: total_cost_of_order {
     type: number
     value_format_name: decimal_2
     sql:
-        (SELECT SUM(inventory_items.cost)
-        FROM order_items
-        LEFT JOIN inventory_items ON order_items.inventory_item_id = inventory_items.id
-        WHERE order_items.order_id = ${id}) ;;
+    (SELECT SUM(inventory_items.cost)
+    FROM order_items
+    LEFT JOIN inventory_items ON order_items.inventory_item_id = inventory_items.id
+    WHERE order_items.order_id = ${id}) ;;
   }
 
   dimension: order_profit {
@@ -63,11 +55,11 @@ view: orders {
   dimension: order_sequence_number {
     type: number
     sql:
-      (SELECT COUNT(*)
-      FROM orders o
-      WHERE o.id < ${TABLE}.id
-      AND o.user_id = ${TABLE}.user_id) + 1
-      ;;
+    (SELECT COUNT(*)
+    FROM orders o
+    WHERE o.id < ${TABLE}.id
+    AND o.user_id = ${TABLE}.user_id) + 1
+    ;;
   }
 
   dimension: is_first_purchase {

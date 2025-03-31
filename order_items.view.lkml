@@ -18,12 +18,7 @@ view: order_items {
     ]
     sql: ${TABLE}.created_at ;;
   }
-
-  dimension: inventory_item_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.inventory_item_id ;;
-  }
+  
 
   dimension: order_id {
     type: number
@@ -43,6 +38,13 @@ view: order_items {
     ]
     convert_tz: no
     sql: ${TABLE}.returned_at ;;
+  }
+
+
+  dimension: inventory_item_id {
+    type: number123
+    # hidden: yes
+    sql: ${TABLE}.inventory_item_id ;;
   }
 
   dimension: sale_price {
