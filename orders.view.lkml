@@ -21,7 +21,7 @@ view: orders {
   dimension: total_amount_of_order_usd {
     type: number
     value_format_name: decimal_2
-    sql: 
+    sql:
     (SELECT SUM(order_items.sale_price)
     FROM order_items
     WHERE order_items.order_id = ${id}) ;;
@@ -30,7 +30,7 @@ view: orders {
   dimension: total_cost_of_order {
     type: number
     value_format_name: decimal_2
-    sql: 
+    sql:
     (SELECT SUM(inventory_items.cost)
     FROM order_items
     LEFT JOIN inventory_items ON order_items.inventory_item_id = inventory_items.id
@@ -45,7 +45,7 @@ view: orders {
 
   dimension: order_sequence_number {
     type: number
-    sql: 
+    sql:
     (SELECT COUNT(*)
     FROM orders o
     WHERE o.id < ${TABLE}.id
@@ -64,18 +64,12 @@ view: orders {
       id,
       users.last_name,
       users.first_name,
-      users.id,
-    drill_fields: [
-        id,
-        created_time,
-        users.name,
-        users.history,
-        total_cost_of_order
-      ]
-    measure: average_order_profit {
-      type: average
-      value_format: "$#.00"
-      sql: ${order_profit} ;;
-    }
+      users.id
+    ]
+  }
+  measure: average_order_profit {
+    type: average
+    value_format: "$#.00"
+    sql: ${order_profit} ;;
   }
 }

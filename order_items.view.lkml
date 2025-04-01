@@ -37,6 +37,11 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
+  dimension: user_id {
+    type: string
+    sql: ${TABLE}.user_id ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, inventory_items.id, orders.id]
