@@ -8,33 +8,33 @@ view: order_items {
   dimension_group: created {
     type: time
     timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
+    raw,
+    time,
+    date,
+    week,
+    month,
+    quarter,
+    year
     ]
     sql: ${TABLE}.created_at ;;
   }
-  
+
 
   dimension: order_id {
     type: number
-    # hidden: yes
+# hidden: yes
     sql: ${TABLE}.order_id ;;
   }
 
   dimension_group: returned {
     type: time
     timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
+    raw,
+    date,
+    week,
+    month,
+    quarter,
+    year
     ]
     convert_tz: no
     sql: ${TABLE}.returned_at ;;
@@ -42,8 +42,8 @@ view: order_items {
 
 
   dimension: inventory_item_id {
-    type: number123
-    # hidden: yes
+    type: number
+# hidden: yes
     sql: ${TABLE}.inventory_item_id ;;
   }
 
