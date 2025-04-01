@@ -8,13 +8,13 @@ view: order_items {
   dimension_group: created {
     type: time
     timeframes: [
-    raw,
-    time,
-    date,
-    week,
-    month,
-    quarter,
-    year
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -29,12 +29,12 @@ view: order_items {
   dimension_group: returned {
     type: time
     timeframes: [
-    raw,
-    date,
-    week,
-    month,
-    quarter,
-    year
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
     ]
     convert_tz: no
     sql: ${TABLE}.returned_at ;;
@@ -65,8 +65,9 @@ view: order_items {
   }
 
   measure: total_gross_profit {
+    label: "Total Gross Margin"
     type: sum
-    sql: 1.0 * (${sale_price} - ${inventory_items.cost}) / 100 ;;
+    sql: (${sale_price} - ${inventory_items.cost}) ;;
     value_format: "$#,##0.00"
   }
 
