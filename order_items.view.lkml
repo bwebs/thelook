@@ -17,6 +17,11 @@ view: order_items {
     sql: ${TABLE}.order_id ;;
   }
 
+  dimension: test {
+    type: number
+    sql: ${TABLE}.test ;;
+  }
+
   dimension_group: returned {
     type: time
     timeframes: []
