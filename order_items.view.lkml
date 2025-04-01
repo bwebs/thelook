@@ -7,18 +7,14 @@ view: order_items {
 
   dimension_group: created {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+    timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: test {
+    type: string
+    sql: ${TABLE}.test2 ;;
+  }
 
   dimension: order_id {
     type: number
@@ -28,14 +24,7 @@ view: order_items {
 
   dimension_group: returned {
     type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+    timeframes: []
     convert_tz: no
     sql: ${TABLE}.returned_at ;;
   }
