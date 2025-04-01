@@ -13,7 +13,7 @@ view: order_items {
 
   dimension: test {
     type: string
-    sql: ${TABLE}.test2 ;;
+    sql: ${TABLE}.test ;;
   }
 
   dimension: order_id {
