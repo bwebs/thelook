@@ -8,13 +8,13 @@ view: order_items {
   dimension_group: created {
     type: time
     timeframes: [
-    raw,
-    time,
-    date,
-    week,
-    month,
-    quarter,
-    year
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -29,12 +29,12 @@ view: order_items {
   dimension_group: returned {
     type: time
     timeframes: [
-    raw,
-    date,
-    week,
-    month,
-    quarter,
-    year
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
     ]
     convert_tz: no
     sql: ${TABLE}.returned_at ;;
@@ -61,6 +61,12 @@ view: order_items {
   measure: total_sale_price {
     type: sum
     sql: ${sale_price} ;;
+    value_format: "$#,##0.00"
+  }
+
+  measure: total_gross_profit {
+    type: sum
+    sql: ${sale_price} - ${inventory_items.cost} ;;
     value_format: "$#,##0.00"
   }
 
