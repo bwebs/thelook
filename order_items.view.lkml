@@ -11,6 +11,11 @@ view: order_items {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: test {
+    type: string
+    sql: ${TABLE}.field ;;
+  }
+
   dimension: order_id {
     type: number
 # hidden: yes
