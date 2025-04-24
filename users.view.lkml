@@ -13,7 +13,7 @@ view: users {
   }
 
   dimension: city {
-    label: "City5"
+    label: "City6"
     type: string
     sql: ${TABLE}.city ;;
   }
@@ -26,13 +26,13 @@ view: users {
   dimension_group: created {
     type: time
     timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
+    raw,
+    time,
+    date,
+    week,
+    month,
+    quarter,
+    year
     ]
     sql: ${TABLE}.created_at ;;
   }
