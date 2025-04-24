@@ -1,4 +1,4 @@
-connection: "thelook"
+connection: "bq-pdt-override-test"
 
 # include all the views
 include: "*.view"
