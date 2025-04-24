@@ -1,4 +1,5 @@
 view: products {
+  sql_table_name: `looker-private-demo.ecomm.products` ;;
   dimension: id {
     primary_key: yes
     type: number
@@ -7,7 +8,7 @@ view: products {
 
   dimension: brand {
     type: string
-    sql: ${TABLE}.brand7 ;;
+    sql: ${TABLE}.brand ;;
   }
 
   dimension: category {

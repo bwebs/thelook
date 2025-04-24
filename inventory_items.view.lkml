@@ -1,4 +1,5 @@
 view: inventory_items {
+  sql_table_name: `looker-private-demo.ecomm.inventory_items` ;;
   dimension: id {
     primary_key: yes
     type: number
@@ -13,12 +14,12 @@ view: inventory_items {
   dimension_group: created {
     type: time
     timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
+    raw,
+    date,
+    week,
+    month,
+    quarter,
+    year
     ]
     convert_tz: no
     sql: ${TABLE}.created_at ;;
@@ -26,19 +27,19 @@ view: inventory_items {
 
   dimension: product_id {
     type: number
-    # hidden: yes
+# hidden: yes
     sql: ${TABLE}.product_id ;;
   }
 
   dimension_group: sold {
     type: time
     timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
+    raw,
+    date,
+    week,
+    month,
+    quarter,
+    year
     ]
     convert_tz: no
     sql: ${TABLE}.sold_at ;;
