@@ -13,7 +13,6 @@ view: users {
   }
 
   dimension: city {
-    label: "City2"
     type: string
     sql: ${TABLE}.city ;;
   }
