@@ -59,7 +59,12 @@ view: order_items {
   }
   measure: total_gross_margin {
     type: sum
-    sql: (${sale_price} - ${inventory_items.cost}) ;;
+    sql: (${sale_price} - ${inventory_items.cost}) / NULLIF(${sale_price}, 0) ;;
+    value_format_name: usd
+  }
+  measure: total_sale_price {
+    type: sum
+    sql: ${sale_price} ;;
     value_format_name: usd
   }
   measure: count {
@@ -70,12 +75,12 @@ view: order_items {
 # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-    id,
-    users.last_name,
-    users.id,
-    users.first_name,
-    inventory_items.id,
-    inventory_items.product_name
+      id,
+      users.last_name,
+      users.id,
+      users.first_name,
+      inventory_items.id,
+      inventory_items.product_name
     ]
   }
 

@@ -6,4 +6,10 @@ alwaysApply: true
 - If you need to modify or create a new explore, that should be done in [thelook_bryan.model.lkml](mdc:thelook_bryan.model.lkml)
 - View files are kept in the views folder. It is best practice to only have one view definition per file
 - We really like to use persisted derived tables in the view > derived table definition. Please default to using the datagroup if one exist in a *.model.lkml file.
-- Do a reasonable job of fixing linting errors you receive from the lookml language servergit 
+- We really like reusability of dimensions and measures, please try to make atomic dimensions that then are referenced by other dimensions and measures.
+- Do a reasonable job of fixing linting errors you receive from the lookml language server
+- If you are referencing a field from another view, please make sure its joined in the explore definition found in the model file. 
+- I prefer you to use native Looker measure types where appropriate, (count, sum, average, count_distinct) rather than type: number with theaggregation hard coded in the SQL
+- When translating SQL to LookML, I'd like you to look at transformations closely and determine if these should be broken out into their own calculations. For example, if I have a calculation like `AVG(date_diff(created_at, delivered_at, MINUTE)) as average_gross_margin`, first create a dimension called delivery_time with a sql definition of `date_diff(created_at, delivered_at, MINUTE)` and a measure for average_delivery_time `measure: average_delivery_time { type: average, sql: ${delivery_time} ;; }
+- if you see a `{{ ref('table_name') }}` in a SQL file, it means its referencing a dbt model called `table_name`. In LookML this would be found in views/table_name.view.lkml
+- make sure you are doing correct indententations with the lookml files. If you see an linting error like `"dimension" blocks can only be defined inside view files.lookml-lsp` then its most likely because you haven't indented properly
