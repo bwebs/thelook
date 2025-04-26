@@ -6,4 +6,4 @@ alwaysApply: true
 - If you need to modify or create a new explore, that should be done in [thelook_bryan.model.lkml](mdc:thelook_bryan.model.lkml)
 - View files are kept in the views folder. It is best practice to only have one view definition per file
 - We really like to use persisted derived tables in the view > derived table definition. Please default to using the datagroup if one exist in a *.model.lkml file.
-- Do a reasonable job of fixing linting errors you receive from the lookml language server
+- Do a reasonable job of fixing linting errors you receive from the lookml language servergit 
