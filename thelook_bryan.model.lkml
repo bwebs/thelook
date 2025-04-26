@@ -5,13 +5,3 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
 explore: order_items {}
-
-explore: users {}
-
-explore: products {}
-
-explore: inventory_items {}
-
-explore: events {}
-
-explore: distribution_centers {}
