@@ -21,7 +21,7 @@ view: order_items {
   }
   dimension: inventory_item_id {
     type: number
-    # hidden: yes
+# hidden: yes
     sql: ${TABLE}.inventory_item_id ;;
   }
   dimension: order_id {
@@ -50,24 +50,33 @@ view: order_items {
   }
   dimension: user_id {
     type: number
-    # hidden: yes
+# hidden: yes
     sql: ${TABLE}.user_id ;;
+  }
+  dimension: gross_margin {
+    type: number
+    sql: (${sale_price} - ${inventory_items.cost}) ;;
+  }
+  measure: total_gross_margin {
+    type: sum
+    sql: (${sale_price} - ${inventory_items.cost}) ;;
+    value_format_name: usd
   }
   measure: count {
     type: count
     drill_fields: [detail*]
   }
 
-  # ----- Sets of fields for drilling ------
+# ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	users.last_name,
-	users.id,
-	users.first_name,
-	inventory_items.id,
-	inventory_items.product_name
-	]
+    id,
+    users.last_name,
+    users.id,
+    users.first_name,
+    inventory_items.id,
+    inventory_items.product_name
+    ]
   }
 
 }
