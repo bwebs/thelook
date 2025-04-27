@@ -55,7 +55,7 @@ view: order_items {
   }
   dimension: gross_margin {
     type: number
-    sql: (${sale_price} - ${inventory_items.cost}) ;;
+    sql: (${sale_price} - ${inventory_items.cost}abc) ;;
   }
   measure: total_gross_margin {
     type: sum
@@ -75,12 +75,12 @@ view: order_items {
 # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-      id,
-      users.last_name,
-      users.id,
-      users.first_name,
-      inventory_items.id,
-      inventory_items.product_name
+    id,
+    users.last_name,
+    users.id,
+    users.first_name,
+    inventory_items.id,
+    inventory_items.product_name
     ]
   }
 
