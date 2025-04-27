@@ -55,11 +55,16 @@ view: order_items {
   }
   dimension: gross_margin {
     type: number
-    sql: (${sale_price} - ${inventory_items.cost}) ;;
+    sql: (${sale_price} - ${inventory_items.cost}abc) ;;
   }
   measure: total_gross_margin {
     type: sum
-    sql: (${sale_price} - ${inventory_items.cost}) ;;
+    sql: (${sale_price} - ${inventory_items.cost}) / NULLIF(${sale_price}, 0) ;;
+    value_format_name: usd
+  }
+  measure: total_sale_price {
+    type: sum
+    sql: ${sale_price} ;;
     value_format_name: usd
   }
   measure: count {
