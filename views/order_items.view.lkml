@@ -3,7 +3,7 @@ view: order_items_vw {
   derived_table: {
     sql: SELECT 1 as one  ;;
     persist_for: "24 hours"
-    sql_trigger_value: SELECT CURRENT_DATE() ;;
+    sql_trigger_value: SELECT CURRENT_TIMESTAMP() ;;
   }
   dimension: one {}
 }
