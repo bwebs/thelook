@@ -2,7 +2,7 @@ explore: order_items_vw {}
 view: order_items_vw {
   derived_table: {
     sql: SELECT 1 as one  ;;
-    persist_for: "24 hours"
+    publish_as_db_view: yes
     sql_trigger_value: SELECT CURRENT_TIMESTAMP() ;;
   }
   dimension: one {}
