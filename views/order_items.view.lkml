@@ -1,3 +1,12 @@
+explore: order_items_vw {}
+view: order_items_vw {
+  derived_table: {
+    sql: SELECT 1 as one  ;;
+    persist_for: "24 hours"
+    sql_trigger_value: SELECT CURRENT_DATE() ;;
+  }
+  dimension: one {}
+}
 view: order_items {
   sql_table_name: `looker-private-demo.ecomm.order_items` ;;
   drill_fields: [id]
@@ -61,13 +70,13 @@ view: order_items {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	users.last_name,
-	users.id,
-	users.first_name,
-	inventory_items.id,
-	inventory_items.product_name
-	]
+  id,
+  users.last_name,
+  users.id,
+  users.first_name,
+  inventory_items.id,
+  inventory_items.product_name
+  ]
   }
 
 }
