@@ -46,15 +46,6 @@ view: order_items {
     type: number
     sql: ${TABLE}.sale_price ;;
   }
-  dimension: gross_margin {
-    type: number
-    sql: ${sale_price} - ${inventory_items.cost} ;;
-  }
-  measure: total_gross_margin {
-    type: sum
-    sql: ${gross_margin} ;;
-    drill_fields: [id]
-  }
   dimension_group: shipped {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
