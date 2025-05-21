@@ -4,4 +4,10 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 # include: "/**/*.view.lkml"                 # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
-explore: order_items {}
+explore: order_items {
+  join: inventory_items {
+    type: left_outer
+    sql_on: ${order_items.order_id} = ${inventory_items.id} ;;
+    relationship: many_to_one
+  }
+}
