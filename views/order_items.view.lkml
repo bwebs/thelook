@@ -52,7 +52,7 @@ view: order_items {
   }
   measure: total_gross_margin {
     type: sum
-    sql: ${gross_margin} ;;
+    sql: ${gross_margin} + 'hi' ;;
     drill_fields: [id]
   }
   dimension_group: shipped {
